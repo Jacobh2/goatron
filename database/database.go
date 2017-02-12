@@ -15,11 +15,11 @@ func Database() (*gorm.DB, error) {
     mysqlAddr := os.Getenv("MYSQL_ADDRESS")
 
     if(mysqlAddr == ""){
-        ips, err := net.LookupIP("mysql")
+        /*ips, err := net.LookupIP("mysql")
         if err != nil {
             return nil, err
-        }
-        mysqlAddr = ips[0].String() + ":3306"
+        }*/
+        mysqlAddr = "mysql:3306"
     }
 
     println("**** DATABASE CONNECTION ****")
@@ -28,7 +28,7 @@ func Database() (*gorm.DB, error) {
 
 
     //open a db connection
-    db, err := gorm.Open("mysql", mysqlUser + ":" + mysqlPwd + "@tcp://" + mysqlAddr + "/" + mysqlDb + "?charset=utf8&parseTime=True&loc=Local")
+    db, err := gorm.Open("mysql", mysqlUser + ":" + mysqlPwd + "@tcp(" + mysqlAddr + ")/" + mysqlDb + "?charset=utf8&parseTime=True&loc=Local")
 
     if err != nil {
         return nil, err
