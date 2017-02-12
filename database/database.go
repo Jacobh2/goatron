@@ -4,7 +4,6 @@ import(
     "os"
     "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/mysql"
-    "net"
 )
 
 func Database() (*gorm.DB, error) {
@@ -15,10 +14,6 @@ func Database() (*gorm.DB, error) {
     mysqlAddr := os.Getenv("MYSQL_ADDRESS")
 
     if(mysqlAddr == ""){
-        /*ips, err := net.LookupIP("mysql")
-        if err != nil {
-            return nil, err
-        }*/
         mysqlAddr = "mysql:3306"
     }
 
