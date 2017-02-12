@@ -4,8 +4,10 @@ WORKDIR /go/src/app
 
 COPY . .
 
-# Use port 8080
+# Envs for the app
 ENV PORT 8080
+ENV BASE_URL "/api/v1/todos"
+ENV ADDRESS "0.0.0.0"
 
 # Set the GOBIN env to be able to install
 ENV GOBIN /go/bin

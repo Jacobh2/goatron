@@ -23,7 +23,7 @@ func Service()  {
     
     router := gin.Default()
 
-    baseURL := os.Getenv("BASE_ENV")
+    baseURL := os.Getenv("BASE_URL")
 
     if(baseURL == ""){
         baseURL = "/api/v1/todos"
@@ -50,6 +50,9 @@ func Service()  {
     if(PORT == ""){
         PORT = "8080"
     }
+
+    println("Will start service on port " + PORT)
+    println("With address " + ADDR)
 
     router.Run(ADDR + ":" + PORT)
     
