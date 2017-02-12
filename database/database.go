@@ -19,7 +19,7 @@ func Database() (*gorm.DB, error) {
         if err != nil {
             return nil, err
         }
-        mysqlAddr = ips[0].String() + ":3306"
+        mysqlAddr = ips[0].String()
     }
 
     println("**** DATABASE CONNECTION ****")
