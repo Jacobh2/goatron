@@ -14,7 +14,7 @@ func Database() (*gorm.DB, error) {
     mysqlAddr := os.Getenv("MYSQL_ADDRESS")
 
     if(mysqlAddr == ""){
-        mysqlAddr = "mysql"
+        mysqlAddr = os.Getenv("mysql") + ":3306"
     }
 
     println("**** DATABASE CONNECTION ****")
