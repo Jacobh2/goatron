@@ -23,5 +23,9 @@ RUN go get -d
 
 RUN go install ./main/main.go
 
-CMD ["main"]
+# CMD ["main"]
+
+RUN git clone https://github.com/vishnubob/wait-for-it.git
+
+CMD ["./wait-for-it/wait-for-it.sh", "mysql:3306", "--", "main"]
 
