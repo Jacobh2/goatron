@@ -12,28 +12,12 @@ This will start the server at `http://127.0.0.1:8080/api/v1/todos`
 ## Build
 `go build main/main.go`
 
-# Methods
-### Create TODO
-Type: POST
-Path: `/`
-Params:
-- title
-- completed (1 or 0 for true or false)
-### Fetch all TODOs
-Type: GET
-Path: `/`
-### Fetch single TODO
-Type: GET
-Path: `/id`
-### Update TODO
-Type: PUT
-Path: `/id`
-Params:
-- title
-- completed (1 or 0 for true or false)
-### Delete TODO
-Type: DELETE
-Path: `/id`
-### Delete all TODOs
-Type: DELETE
-Path: `/`
+## Methods
+| Method                                            | Type          | Path  | Params
+| :------------------------------------------------ | :------------ | :---- | :----------------
+| <i class="icon-file"></i>Create a TODO            | POST          | `/`   | title, completed
+| <i class="icon-folder-open"></i> Fetch all TODOs  | GET           | `/`   |
+| <i class="icon-folder-open"></i> Fetch single TODO| POST          | `/id` |
+| <i class="icon-pencil"></i> Update TODO           | PUT           | `/id` | title, completed
+| <i class="icon-trash"></i> Delete TODO            | DELETE        | `/id` |
+| <i class="icon-trash"></i> Delete all TODOs       | DELETE        | `/`   |
