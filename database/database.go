@@ -13,6 +13,15 @@ func Database() (*gorm.DB, error) {
     mysqlDb := os.Getenv("MYSQL_DB_NAME")
     mysqlAddr := os.Getenv("MYSQL_ADDRESS")
 
+    if(mysqlAddr == ""){
+        mysqlAddr = "mysql"
+    }
+
+    println("**** DATABASE CONNECTION ****")
+    println("User: " + mysqlUser)
+    println("Addr: " + mysqlAddr)
+
+
     //open a db connection
     db, err := gorm.Open("mysql", mysqlUser + ":" + mysqlPwd + "@" + mysqlAddr + "/" + mysqlDb + "?charset=utf8&parseTime=True&loc=Local")
 
