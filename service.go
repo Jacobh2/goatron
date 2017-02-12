@@ -5,6 +5,7 @@ import (
     "github.com/jacobh2/goatron/routes"
     "github.com/jacobh2/goatron/database"
     "github.com/jacobh2/goatron/datatypes"
+    "os"
 )
 
 func Service()  {
@@ -16,7 +17,13 @@ func Service()  {
     
     router := gin.Default()
 
-    v1 := router.Group("/api/v1/todos")
+    baseURL := os.Getenv("BASE_ENV")
+
+    if(baseURL == ""){
+        baseURL = "/api/v1/todos"
+    }
+
+    v1 := router.Group(baseURL)
     {
         v1.POST("/", routes.CreateTodo)
         v1.GET("/", routes.FetchAllTodo)
@@ -25,6 +32,19 @@ func Service()  {
         v1.DELETE("/:id", routes.DeleteTodo)
         v1.DELETE("/", routes.DeleteAllTodo)
     }
-    router.Run()
+
+    ADDR := os.Getenv("ADDRESS")
+    
+    if(ADDR == ""){
+        ADDR = "127.0.0.1"
+    }
+
+    PORT := os.Getenv("PORT")
+
+    if(PORT == ""){
+        PORT = "8080"
+    }
+
+    router.Run(ADDR + ":" + PORT)
     
 }
