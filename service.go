@@ -11,7 +11,13 @@ import (
 func Service()  {
 
     //Migrate the schema
-    db, _ := database.Database()
+    db, err := database.Database()
+
+    if(err != nil){
+        println("No connection to MySQL found!")
+        return
+    }
+
     defer db.Close()
     db.AutoMigrate(&datatypes.Todo{})
     
